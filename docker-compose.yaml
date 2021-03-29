@@ -1,0 +1,19 @@
+version: '3'
+services:
+  front:
+    image: lioshi/lamp:php7
+    volumes:
+      - ~/.docker/meteo/www:/var/www/html
+    ports:
+      - "8080:80"
+    depends_on:
+     - back
+    restart: always
+
+  back:
+    image: youssefhammoud/weatherapp:v4
+    ports:
+      - "8001:80"
+
+volumes:
+  fornt: {}

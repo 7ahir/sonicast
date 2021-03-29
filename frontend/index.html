@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"> -->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, viewport-fit=cover,user-scalable = no"">
+    <title>Sonicast</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="style.css">
+
+    <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
+
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-touch/1.8.2/angular-touch.min.js" integrity="sha512-mCJrnox//whq3scvuyMcN4ON5W8QC6XFLB618pcTbe/EI97qUowpP9Rdo/eQJS5uyOObK/7+tHnyKoBSdgi+Dg==" crossorigin="anonymous"></script>
+    <script src="loopify.js"></script>
+    <script src="script.js"></script>
+
+</head>
+<body id="demo" class="col-md-12 no-padding"  ng-app="myApp" ng-controller="myCtrl">
+    <div class="container-fluid">
+        <header id="header-custom" class="row">
+            <h1>Sonicast</h1>
+        </header>
+        <main class="row">
+            <section class="col-md-12">
+                <form id="geo-form-input">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text ios-input-group-text" id="basic-addon1">
+                                    <ion-icon name="search-outline"></ion-icon>
+                                </span>
+                            </div>
+                            <input type="text" list="ice-cream-flavors" ng-blur="sendData()" autocomplete="off" ng-model="formInput.city" class="form-control ios-style-input ios-style-input-grouped" placeholder="Saisir une ville" aria-label="Saisir une ville" aria-describedby="basic-addon1">
+                            <datalist id="ice-cream-flavors">
+                                <option ng-repeat="c in cities | orderBy: [c] track by $index "  value="{{c}}">
+                            </datalist>
+                        
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                      <input type="date" ng-blur="sendData()" class="form-control ios-style-input ios-style-input-single" ng-model="formInput.datevalue" placeholder="Saisir une date Echéance" id="pwd">
+                    </div>
+                  </form>
+            </section>
+            <section id="section-two" class="col-md-12 height-50">
+
+                <div class="scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4 pt-2 no-margin">
+			
+                    <div class="col-6" ng-repeat="w in weather track by $index">
+                        <div class="card card-block no-select" ng-class="{'card-active' : selected == $index }" card-index="{{$index}}" preip-value="{{w.precipSound}}">
+
+                        <ul class="price">
+                            <li class="h4 no-select">{{w.hour}}h</li>
+                            <li class="blue no-select"> 
+                                <ion-icon name="water-outline" style='font-size:36px' aria-label="Précipitation"></ion-icon>
+                                <span class="no-select">{{w.precip}}mm</li>
+                            <li class="red no-select">
+                                <i class='fas fa-wind' style='font-size:30px' aria-hidden="true" class="fas fa-car" title="Vent" ></i>{{w.windSpeed}} nœud</li>
+                            <li class="orange no-select"><ion-icon name="thermometer-outline" aria-label="Température" style='font-size:36px'></ion-icon><span class="no-select" title="{{w.windSpeed}} celsius" aria-label="{{w.windSpeed}} celsius">{{w.temp}} °C</span></li>
+                        </ul>
+                            
+
+                        </div>
+                    </div>
+
+            </div>
+
+            </section>
+        </main>
+    </div>
+
+
+
+</body>
+</html>
