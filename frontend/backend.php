@@ -19,8 +19,8 @@ if($_GET['action'] =='getCityList'){
 }
 if($_GET['action'] =='getWeather'){
 
-	$username='imtatlantique_hammoud';
-	$password='f0Unez9AISKo4';
+	$username='titi_toto';
+	$password='98niDA2vVIqsW';
 
 	$city =$_GET['city'];
 
