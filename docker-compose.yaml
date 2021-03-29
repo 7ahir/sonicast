@@ -1,7 +1,7 @@
 version: '3'
 services:
   front:
-    image: test/sonicast_front
+    image: iamtah3r/sonicast_front:1.0
 
     ports:
       - "8080:80"
@@ -9,6 +9,6 @@ services:
      - back
 
   back:
-    image: test/sonicast_back
+    image: iamtah3r/sonicast_back:1.0
     ports:
       - "8001:80"
