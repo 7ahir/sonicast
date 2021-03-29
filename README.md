@@ -83,9 +83,10 @@ Loopify.js doesnt work with **Safari** !!
 but it does with **Firefox** and **Chrome**
 
 
-Introduction 
-Description du contexte 
-Travail personnel réalisé 
-Retour personnel sur le projet 
-Projection, reste à faire 
-Conclusion
+## RAPPORT du Projet
+** Introduction 
+** Description du contexte 
+** Travail personnel réalisé 
+** Retour personnel sur le projet 
+** Projection, reste à faire 
+** Conclusion
