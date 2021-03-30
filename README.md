@@ -10,6 +10,7 @@ The following tools are needed in order to run the project:
 * [IDE: Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
 * [.Net Core 3.1 or later](https://dotnet.microsoft.com/download/dotnet-core/3.1)
 * [Docker Desktop](https://www.docker.com/products/docker-desktop)
+* [Docker Compose](https://docs.docker.com/compose/install/)
 
 ### Installation
 To setup a local environment, follow the below steps: (Before Run Start the Docker Desktop)
@@ -17,42 +18,38 @@ To setup a local environment, follow the below steps: (Before Run Start the Dock
 ```csharp
 git clone https://gitlab.com/iamtah3r/sonicast.git
 ```
-2. The are 2 directories: FrontEnd and BackEnd. At the root of each directory which include **Dockerfile.yml** file, run below command to build the images for FrontEnd and BackEnd (2 actions):
+2. The are 2 directories: FrontEnd includes the application UI files and BackEnd includes all related dependencies for .Net. Run below commands to build the images for FrontEnd and BackEnd (2 actions):
 
 **FrontEnd**
 ```csharp
-docker build .
+docker build -t iamtah3r/sonicast_front:1.0 FrontEnd/
 ```
 **BackEnd**
 ```csharp
-docker build .
+docker build -t iamtah3r/sonicast_back:1.0 BackEnd/
 ```
-3. At the root directory which include **Dockerfile.yml** files, run below command to create a container from the image:
+3. At the root directory which include **docker-compose.yaml** file, run below command to create 2 containers from the images created above:
 
-**FrontEnd**
 ```csharp
-docker run -p 8000:80 --name sonicast_frontend iamtah3r/sonicast_frontend:1.0
-```
-**BackEnd**
-```csharp
-docker run -p 8000:80 --name sonicast_backend iamtah3r/sonicast_backend:1.0
+docker-compose up
 ```
 
-4. Wait for docker build the image. That’s it!
+4. Wait for docker to build the images and run them. That’s it!
 
-5. Launch  http://localhost:8001/weatherforecast/all in your browser to view the JSON Response.
+5. Launch  http://localhost:8000 in your browser to access the application.
 
+6. Launch  http://localhost:8001/weatherforecast/all in your browser to view the JSON response.
 
-## Front End
-The front end is based on :
-- AngularJs : javascript library to manange data generated from the backend in the front end
+## FrontEnd
+The FrontEnd is based on :
+- AngularJs : javascript library to manange data generated from the BackEnd in the web page
 - Bootstrap : styling library to display the page content 
 - HTML 5 :  structure data in the web page and make it compatible with Voice Over
 - JQuery : javascript library to handle user touch actions
 - LoopifyJs : javascript library to make playing seamless looping audio files
 
-## Back End PHP
-The back end file is gathering data (date and city name) from the front end and send it to the weather API in order to send back the weather forcast to the website :
+## BackEnd PHP
+The BackEnd file is gathering data (date and city name) from the FrontEnd and send it to the weather API in order to send back the weather forcast to the website :
 * 1. Getting city name and date from the front end
 * 2. Cheking date :
   * 2.1 if the date is in the past, the system will block it
