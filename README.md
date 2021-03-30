@@ -1,30 +1,46 @@
 ## Author
 * **Mahamat Tahir Brahim Tidjani**
 
-## Whats Including In This Repository
-We have implemented below ** A application to get all the cities on a JSON format **.
+## What's Included In This Repository
+This is an implementation of **a weather forcast application for blind people. The application retrieves a list of cities on a JSON format and display corresponding temperature**.
 
 ## Run The Project
-You will need the following tools:
+The following tools are needed in order to run the project:
 
-* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
+* [IDE: Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
 * [.Net Core 3.1 or later](https://dotnet.microsoft.com/download/dotnet-core/3.1)
 * [Docker Desktop](https://www.docker.com/products/docker-desktop)
 
-### Installing
-Follow these steps to get your development environment set up: (Before Run Start the Docker Desktop)
+### Installation
+To setup a local environment, follow the below steps: (Before Run Start the Docker Desktop)
 1. Clone the repository
-2. At the root directory which include **Dockerfile.yml** files, run below command to build the image:
+```csharp
+git clone https://gitlab.com/iamtah3r/sonicast.git
+```
+2. The are 2 directories: FrontEnd and BackEnd. At the root of each directory which include **Dockerfile.yml** file, run below command to build the images for FrontEnd and BackEnd (2 actions):
+
+**FrontEnd**
+```csharp
+docker build .
+```
+**BackEnd**
 ```csharp
 docker build .
 ```
 3. At the root directory which include **Dockerfile.yml** files, run below command to create a container from the image:
+
+**FrontEnd**
 ```csharp
-docker run weatherapp:dev -p 32770:80 --name WeatherApp
+docker run -p 8000:80 --name sonicast_frontend iamtah3r/sonicast_frontend:1.0
 ```
+**BackEnd**
+```csharp
+docker run -p 8000:80 --name sonicast_backend iamtah3r/sonicast_backend:1.0
+```
+
 4. Wait for docker build the image. That’s it!
 
-5. Launch  http://localhost:32770/weatherforecast in your browser to view the JSON Response.
+5. Launch  http://localhost:8001/weatherforecast/all in your browser to view the JSON Response.
 
 
 ## Front End
@@ -81,12 +97,3 @@ According to the documentation provided by the author.
 ⚠️ ️<span style="color:red"> Warning </span> ⚠️
 Loopify.js doesnt work with **Safari** !!
 but it does with **Firefox** and **Chrome**
-
-
-## RAPPORT du Projet
-** Introduction 
-** Description du contexte 
-** Travail personnel réalisé 
-** Retour personnel sur le projet 
-** Projection, reste à faire 
-** Conclusion

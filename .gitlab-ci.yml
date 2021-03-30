@@ -6,7 +6,7 @@ variables:
 
 stages:
   - build
-  - deploy
+ # - deploy
 
 # ---
 
@@ -30,3 +30,5 @@ job_deploy:
   script:
     - echo "This job deploy something."
     - echo "Only when all test jobs are finished."
+
+# ----

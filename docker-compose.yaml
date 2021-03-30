@@ -1,14 +1,14 @@
 version: '3'
 services:
   front:
-    image: iamtah3r/sonicast_front:1.0
+    image: iamtah3r/sonicast_frontend:1.0
 
     ports:
-      - "8080:80"
+      - "8000:80"
     depends_on:
      - back
 
   back:
-    image: iamtah3r/sonicast_back:1.0
+    image: iamtah3r/sonicast_backend:1.0
     ports:
       - "8001:80"
