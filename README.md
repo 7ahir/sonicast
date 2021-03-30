@@ -1,5 +1,5 @@
 ## Author
-* **Mahamat Tahir Brahim Tidjani**
+* **Tahir Tidjani**
 
 ## What's Included In This Repository
 This is an implementation of **a weather forcast application for blind people. The application retrieves a list of cities on a JSON format and display corresponding temperature**.
