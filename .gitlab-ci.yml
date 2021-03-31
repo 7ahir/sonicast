@@ -1,6 +1,6 @@
 variables:
-  IMAGE_TAG_FRONTEND: $CI_REGISTRY_IMAGE/sonicast_front:1.0
-  IMAGE_TAG_BACKEND: $CI_REGISTRY_IMAGE/sonicast_back:1.0
+  IMAGE_TAG_FRONTEND: $CI_REGISTRY_IMAGE/iamtah3r/sonicast/sonicast_front:1.0
+  IMAGE_TAG_BACKEND: $CI_REGISTRY_IMAGE/iamtah3r/sonicast/sonicast_back:1.0
   IMAGE_NAME_FRONTEND: FrontEnd
   IMAGE_NAME_BACKEND: BackEnd 
 
