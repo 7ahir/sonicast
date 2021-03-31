@@ -44,6 +44,8 @@ build_docker_image:
 job_build:sonicast_front:
   extends: .build_docker_image
   stage: build
+  variables:
+  IMAGE_NAME: ${IMAGE_NAME_FRONTEND}
   script:
     - cd ${IMAGE_NAME_FRONTEND}
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
@@ -53,6 +55,8 @@ job_build:sonicast_front:
 job_build:sonicast_back:
   extends: .build_docker_image
   stage: build
+  variables:
+  IMAGE_NAME: ${IMAGE_NAME_BACKEND}
   script:
     - cd ${IMAGE_NAME_BACKEND}
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
