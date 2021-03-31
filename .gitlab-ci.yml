@@ -8,7 +8,7 @@ stages:
   - build
  # - deploy
 
-build_docker_image:
+default:
   image: docker:20.10
   services:
     - docker:20.10-dind
@@ -18,7 +18,7 @@ build_docker_image:
 
 # ---
 
-job_build:
+job_build_frontend:
   #extends: .build_docker_image
   stage: build
   script:
@@ -26,7 +26,7 @@ job_build:
     - docker build -t $IMAGE_TAG_FRONTEND .
     - docker push $IMAGE_TAG_FRONTEND
 
-job_build:
+job_build_backend:
   #extends: .build_docker_image
   stage: build
   script:
