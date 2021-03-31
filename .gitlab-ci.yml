@@ -42,6 +42,7 @@ build_docker_image:
 # ---
 
 job_build:sonicast_front:
+  extends: .build_docker_image
   stage: build
   script:
     - cd ${IMAGE_NAME_FRONTEND}
@@ -50,6 +51,7 @@ job_build:sonicast_front:
     - docker push $IMAGE_TAG_FRONTEND
 
 job_build:sonicast_back:
+  extends: .build_docker_image
   stage: build
   script:
     - cd ${IMAGE_NAME_BACKEND}
