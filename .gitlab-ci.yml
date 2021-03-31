@@ -8,58 +8,29 @@ stages:
   - build
  # - deploy
 
-.build_docker_image:
-  image: docker:20.10
-  services:
-    - docker:20.10-dind
-  before_script:
-    # check variables
-    - echo "CI_REGISTRY_IMAGE = $CI_REGISTRY_IMAGE"
-    - echo "IMAGE_NAME = $IMAGE_NAME"
-    # Create IMAGE Tag
-    - export MY_IMAGE_REGISTRY=${CI_REGISTRY_IMAGE}/${IMAGE_NAME}:latest
-      # Connect to registry 
-    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
-  script:
-    # check variable
-    - echo "IMAGE_NAME = $IMAGE_NAME"
-    - echo "MY_IMAGE_REGISTRY = $MY_IMAGE_REGISTRY"
-    # build de l'image
-    #   - copie du dockerfile et des ressources à la racine du projet
-    #   - build de l'image
-    - mv docker-images/${IMAGE_NAME}/* .
-    - docker build -t ${MY_IMAGE_REGISTRY}  .
-    # push dans la registry 
-    - docker push ${MY_IMAGE_REGISTRY}
-
-# ---
-
 build_docker_image:
   image: docker:20.10
   services:
     - docker:20.10-dind
+  before_script:
+      # Connect to registry 
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
 
 # ---
 
-job_build:sonicast_front:
-  extends: .build_docker_image
+job_build:
+  #extends: .build_docker_image
   stage: build
-  variables:
-  IMAGE_NAME: ${IMAGE_NAME_FRONTEND}
   script:
     - cd ${IMAGE_NAME_FRONTEND}
-    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
     - docker build -t $IMAGE_TAG_FRONTEND .
     - docker push $IMAGE_TAG_FRONTEND
 
-job_build:sonicast_back:
-  extends: .build_docker_image
+job_build:
+  #extends: .build_docker_image
   stage: build
-  variables:
-  IMAGE_NAME: ${IMAGE_NAME_BACKEND}
   script:
     - cd ${IMAGE_NAME_BACKEND}
-    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
     - docker build -t $IMAGE_TAG_BACKEND .
     - docker push $IMAGE_TAG_BACKEND
 # ---
